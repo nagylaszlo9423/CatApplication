@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <activity android:name="hu.bme.aut.moblab.hw.catapplication.ui.ListActivity">
+        <activity android:name="hu.bme.aut.moblab.hw.catapplication.ui.list.CatsListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
