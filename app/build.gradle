@@ -60,6 +60,9 @@ dependencies {
     androidTestImplementation instrumentationTestDependencies.espressoIdlingResource
     androidTestImplementation instrumentationTestDependencies.espressoIntents
     androidTestImplementation instrumentationTestDependencies.mockito
+    androidTestImplementation instrumentationTestDependencies.supportRunner
+    androidTestImplementation instrumentationTestDependencies.supportRules
+    androidTestImplementation instrumentationTestDependencies.supportAnnotations
 
     androidTestImplementation daggerDependencies.dagger
     androidTestImplementation daggerDependencies.annotation
