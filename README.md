@@ -3,3 +3,7 @@
 # CatApplication
 
 https://github.com/nagylaszlo9423/CatApplication
+
+## Tags
+
+Laboratory tasks are tagged
