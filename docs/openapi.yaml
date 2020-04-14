@@ -1,0 +1,136 @@
+openapi: 3.0.0
+info:
+  title: Cat Application API
+  description: Mobilszoftver laboratórium házi feladat API leírása
+  version: 0.0.1
+servers:
+  - url: 'https://api.thecatapi.com/v1'
+    description: 'Optional server description, e.g. Main (production) server'
+  - url: 'https://cat-fact.herokuapp.com'
+    description: 'Optional server description, e.g. Internal staging server for testing'
+paths:
+  /breeds:
+    get:
+      summary: Returns a list of users.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BreedResult'
+      tags:
+        - TheCatApi
+    parameters: []
+  /facts/random:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - CatFacts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ''
+      operationId: get-facts-random
+components:
+  schemas:
+    BreedResult:
+      title: BreedResult
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        temperament:
+          type: string
+        life_span:
+          type: string
+        alt_names:
+          type: string
+        wikipedia_url:
+          type: string
+        origin:
+          type: string
+        weight_imperial:
+          type: string
+        experimental:
+          type: number
+        hairless:
+          type: number
+        natural:
+          type: number
+        rare:
+          type: number
+        rex:
+          type: number
+        suppress_tail:
+          type: number
+        short_legs:
+          type: number
+        hypoallergenic:
+          type: number
+        adaptability:
+          type: number
+        affection_level:
+          type: number
+        country_core:
+          type: string
+        child_friendly:
+          type: number
+        dog_friendly:
+          type: number
+        energy_level:
+          type: number
+        grooming:
+          type: number
+        health_issues:
+          type: number
+        intelligence:
+          type: number
+        shedding_level:
+          type: number
+        social_needs:
+          type: number
+        stranger_friendly:
+          type: number
+        vocalistaion:
+          type: number
+    FactResult:
+      title: FactResult
+      type: object
+      properties:
+        _id:
+          type: string
+        used:
+          type: boolean
+        source:
+          type: string
+        type:
+          type: string
+        deleted:
+          type: boolean
+        user:
+          type: string
+        text:
+          type: string
+        updatedAt:
+          type: string
+        createdAt:
+          type: string
+        status:
+          $ref: '#/components/schemas/FactStatusResult'
+    FactStatusResult:
+      title: FactStatusResult
+      type: object
+      properties:
+        verified:
+          type: boolean
+        sentCount:
+          type: number
