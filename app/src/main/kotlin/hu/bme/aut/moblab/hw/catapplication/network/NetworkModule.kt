@@ -16,12 +16,32 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
-        throw Exception("Not implemented")
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        return OkHttpClient.Builder().addInterceptor(interceptor).build()
     }
 
     @Provides
     @Singleton
-    fun provideArtistsApi(client: OkHttpClient): TheCatsApi {
-        throw Exception("Not implemented")
+    fun provideTheCatApi(client: OkHttpClient): TheCatsApi {
+        val retrofit = Retrofit.Builder()
+            .client(client)
+            .baseUrl(NetworkConfig.THE_CATS_API_ENDPOINT)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(TheCatsApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCatFactApi(client: OkHttpClient): CatFactsApi {
+        val retrofit = Retrofit.Builder()
+            .client(client)
+            .baseUrl(NetworkConfig.CAT_FACTS_API_ENDPOINT)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(CatFactsApi::class.java)
     }
 }
