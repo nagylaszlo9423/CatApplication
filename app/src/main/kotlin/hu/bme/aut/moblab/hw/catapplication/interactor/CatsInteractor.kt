@@ -1,4 +1,4 @@
-package hu.bme.aut.moblab.hw.catapplication.interactor.cats
+package hu.bme.aut.moblab.hw.catapplication.interactor
 
 import android.content.Context
 import androidx.room.Room

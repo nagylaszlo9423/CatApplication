@@ -1,6 +1,6 @@
 package hu.bme.aut.moblab.hw.catapplication.ui.list
 
-import hu.bme.aut.moblab.hw.catapplication.interactor.cats.CatsInteractor
+import hu.bme.aut.moblab.hw.catapplication.interactor.CatsInteractor
 import hu.bme.aut.moblab.hw.catapplication.ui.Presenter
 import java.lang.Exception
 import javax.inject.Inject
