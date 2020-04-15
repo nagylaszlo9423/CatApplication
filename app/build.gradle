@@ -29,6 +29,7 @@ android {
 }
 
 dependencies {
+    def room_version = "2.2.5"
     implementation kotlinDependencies.stdlib
 
     implementation supportDependencies.appcompat
@@ -42,7 +43,8 @@ dependencies {
     implementation toolkitDependencies.retrofitGsonConverter
     implementation toolkitDependencies.gson
     implementation toolkitDependencies.glide
-    implementation toolkitDependencies.eventbus
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
 
     implementation daggerDependencies.dagger
     kapt daggerDependencies.compiler

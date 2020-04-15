@@ -1,9 +1,7 @@
 import android.app.Application
+import hu.bme.aut.moblab.hw.catapplication.CatApplicationComponent
+import hu.bme.aut.moblab.hw.catapplication.DaggerCatApplicationComponent
 
 class CatApplication : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-    }
-
+    val component: CatApplicationComponent = DaggerCatApplicationComponent.create()
 }

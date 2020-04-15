@@ -19,7 +19,6 @@ package hu.bme.aut.moblab.hw.catapplication.model
  */
 data class FactStatusResult (
 
-    val verified: kotlin.Boolean? = null,
-    val sentCount: java.math.BigDecimal? = null
-) {
-}
+    val verified: Boolean? = null,
+    val sentCount: Int? = null
+)
