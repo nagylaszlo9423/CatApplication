@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface TheCatsApi {
 
     @GET("/breeds")
-    fun getAllCats(): Call<BreedResult>
+    fun getAllCats(): Call<List<BreedResult>>
 
 }
