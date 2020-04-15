@@ -45,7 +45,6 @@ package hu.bme.aut.moblab.hw.catapplication.model
  * @param vocalistaion
  */
 data class BreedResult(
-
     val id: String? = null,
     val name: String? = null,
     val temperament: String? = null,

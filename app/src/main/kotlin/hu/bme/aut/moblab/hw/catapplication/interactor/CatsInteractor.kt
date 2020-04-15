@@ -38,7 +38,7 @@ class CatsInteractor @Inject constructor (
 
     suspend fun getRandomCatFact(): FactResult? = withContext(Contexts.NETWORK) {
         val catFactCall = catFactsApi.getRandomCatFact()
-        val catFactResponse = catFactCall.execute();
+        val catFactResponse = catFactCall.execute()
 
         if (catFactResponse.isSuccessful) {
             return@withContext catFactResponse.body()
