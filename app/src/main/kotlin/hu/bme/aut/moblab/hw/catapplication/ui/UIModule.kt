@@ -2,6 +2,7 @@ package hu.bme.aut.moblab.hw.catapplication.ui
 
 import dagger.Module
 import dagger.Provides
+import hu.bme.aut.moblab.hw.catapplication.interactor.cats.CatsInteractor
 import hu.bme.aut.moblab.hw.catapplication.ui.list.CatPresenter
 import hu.bme.aut.moblab.hw.catapplication.ui.list.CatsPresenter
 import javax.inject.Singleton
@@ -11,10 +12,14 @@ class UIModule {
 
     @Provides
     @Singleton
-    fun provideCatPresenter() = CatPresenter()
+    fun provideCatPresenter(
+        catsInteractor: CatsInteractor
+    ) = CatPresenter(catsInteractor)
 
     @Provides
     @Singleton
-    fun provideCatsPresenter() = CatsPresenter()
+    fun provideCatsPresenter(
+        catsInteractor: CatsInteractor
+    ) = CatsPresenter(catsInteractor)
 
 }
