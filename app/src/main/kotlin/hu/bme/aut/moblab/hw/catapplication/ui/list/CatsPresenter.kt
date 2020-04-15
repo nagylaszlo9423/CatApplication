@@ -1,12 +1,11 @@
 package hu.bme.aut.moblab.hw.catapplication.ui.list
 
-import hu.bme.aut.moblab.hw.catapplication.interactor.cats.event.GetCatsEvent
+import hu.bme.aut.moblab.hw.catapplication.interactor.cats.CatsInteractor
 import hu.bme.aut.moblab.hw.catapplication.ui.Presenter
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 import java.lang.Exception
+import javax.inject.Inject
 
-class CatsPresenter : Presenter<CatListScreen>() {
+class CatsPresenter @Inject constructor(catsInteractor: CatsInteractor) : Presenter<CatListScreen>() {
 
     override fun attachScreen(screen: CatListScreen) {
         super.attachScreen(screen)
@@ -15,11 +14,6 @@ class CatsPresenter : Presenter<CatListScreen>() {
 
     override fun detachScreen() {
         super.detachScreen()
-        throw Exception("Not implemented")
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEvent(event: GetCatsEvent) {
         throw Exception("Not implemented")
     }
 

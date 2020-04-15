@@ -11,7 +11,6 @@
  */
 package hu.bme.aut.moblab.hw.catapplication.model
 
-import io.swagger.client.models.FactStatusResult
 
 /**
  * 
@@ -27,16 +26,14 @@ import io.swagger.client.models.FactStatusResult
  * @param status 
  */
 data class FactResult (
-
-    val id: kotlin.String? = null,
-    val used: kotlin.Boolean? = null,
-    val source: kotlin.String? = null,
-    val type: kotlin.String? = null,
-    val deleted: kotlin.Boolean? = null,
-    val user: kotlin.String? = null,
-    val text: kotlin.String? = null,
-    val updatedAt: kotlin.String? = null,
-    val createdAt: kotlin.String? = null,
+    val id: String? = null,
+    val used: Boolean? = null,
+    val source: String? = null,
+    val type: String? = null,
+    val deleted: Boolean? = null,
+    val user: String? = null,
+    val text: String? = null,
+    val updatedAt: String? = null,
+    val createdAt: String? = null,
     val status: FactStatusResult? = null
-) {
-}
+)
