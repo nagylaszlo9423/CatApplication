@@ -17,4 +17,7 @@ interface CatBreedDao {
     @Query("DELETE FROM ${CatBreedModel.TABLE_NAME}")
     fun deleteAll()
 
+    @Query("SELECT * FROM ${CatBreedModel.TABLE_NAME} WHERE id = :id")
+    fun findById(id: String): CatBreedModel?
+
 }

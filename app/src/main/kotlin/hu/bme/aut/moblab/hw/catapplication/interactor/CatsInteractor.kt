@@ -36,6 +36,10 @@ class CatsInteractor @Inject constructor (
         return@withContext db.catBreedDao().getAll()
     }
 
+    suspend fun getCatById(id: String): CatBreedModel? = withContext(Contexts.NETWORK) {
+        return@withContext db.catBreedDao().findById(id)
+    }
+
     suspend fun getRandomCatFact(): FactResult? = withContext(Contexts.NETWORK) {
         val catFactCall = catFactsApi.getRandomCatFact()
         val catFactResponse = catFactCall.execute()

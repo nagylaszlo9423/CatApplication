@@ -2,19 +2,15 @@ package hu.bme.aut.moblab.hw.catapplication.ui.list
 
 import hu.bme.aut.moblab.hw.catapplication.interactor.CatsInteractor
 import hu.bme.aut.moblab.hw.catapplication.ui.Presenter
-import java.lang.Exception
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CatsPresenter @Inject constructor(catsInteractor: CatsInteractor) : Presenter<CatListScreen>() {
+class CatsPresenter @Inject constructor(private val catsInteractor: CatsInteractor) : Presenter<CatsListScreen>() {
 
-    override fun attachScreen(screen: CatListScreen) {
-        super.attachScreen(screen)
-        throw Exception("Not implemented")
-    }
-
-    override fun detachScreen() {
-        super.detachScreen()
-        throw Exception("Not implemented")
+    fun loadCatBreeds() {
+        launch {
+            screen?.showCats(catsInteractor.getAllCats())
+        }
     }
 
 }
