@@ -1,9 +1,6 @@
 package hu.bme.aut.moblab.hw.catapplication.ui.details
 
-import android.net.Uri
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.ListAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
