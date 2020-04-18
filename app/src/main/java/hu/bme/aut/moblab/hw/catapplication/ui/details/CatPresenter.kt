@@ -10,8 +10,11 @@ class CatPresenter @Inject constructor(private val catsInteractor: CatsInteracto
 
     fun loadCatBreed(id: String) {
         launch {
-            screen?.showCat(catsInteractor.getCatById(id))
-            screen?.showImage(catsInteractor.getImageUrlForCatById(id))
+            screen?.let {
+                it.showCat(catsInteractor.getCatById(id))
+                it.showImage(catsInteractor.getImageUrlForCatById(id))
+                it.showRandomFact(catsInteractor.getRandomCatFact())
+            }
         }
     }
 

@@ -49,6 +49,10 @@ class CatDetailsActivity : AppCompatActivity(), CatDetailsScreen {
         url?.let { Glide.with(this).load(url).into(iv_detail) }
     }
 
+    override fun showRandomFact(fact: String?) {
+        tv_random_fact.text = fact?:"Not found any fact"
+    }
+
     companion object {
         const val CAT_BREED_ID = "CatBreedId"
     }

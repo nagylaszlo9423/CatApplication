@@ -48,12 +48,12 @@ class CatsInteractor @Inject constructor (
         return@withContext null
     }
 
-    suspend fun getRandomCatFact(): FactResult? = withContext(Contexts.NETWORK) {
+    suspend fun getRandomCatFact(): String? = withContext(Contexts.NETWORK) {
         val catFactCall = catFactsApi.getRandomCatFact()
         val catFactResponse = catFactCall.execute()
 
         if (catFactResponse.isSuccessful) {
-            return@withContext catFactResponse.body()
+            return@withContext catFactResponse.body()?.text
         }
 
         return@withContext null
