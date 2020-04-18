@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">CatApplication</string>
-    <string name="cats_list">Cats list</string>
+    <string name="cat_breeds_list">Cat breeds</string>
     <string name="cat">Cat</string>
 </resources>

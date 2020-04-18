@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import hu.bme.aut.moblab.hw.catapplication.R
 import hu.bme.aut.moblab.hw.catapplication.injector
@@ -26,6 +27,10 @@ class CatsListActivity : AppCompatActivity(), CatsListScreen, ItemClickListener 
         catsAdapter = CatsAdapter(this)
         rv_cats_list.layoutManager = LinearLayoutManager(applicationContext)
         rv_cats_list.adapter = catsAdapter
+    }
+
+    override fun onStart() {
+        super.onStart()
         catsPresenter.attachScreen(this)
         catsPresenter.loadCatBreeds()
     }

@@ -1,10 +1,13 @@
 package hu.bme.aut.moblab.hw.catapplication.ui.details
 
+import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.widget.ListAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import hu.bme.aut.moblab.hw.catapplication.R
 import hu.bme.aut.moblab.hw.catapplication.injector
 import hu.bme.aut.moblab.hw.catapplication.model.CatBreedListModel
 import hu.bme.aut.moblab.hw.catapplication.ui.list.CatDetailsScreen
@@ -18,14 +21,19 @@ class CatDetailsActivity : AppCompatActivity(), CatDetailsScreen {
     @Inject
     lateinit var catPresenter: CatPresenter
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         injector().inject(this)
-        super.onCreate(savedInstanceState, persistentState)
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_cat_details)
         catAdapter = CatAdapter()
         rv_cat_details.layoutManager = LinearLayoutManager(applicationContext)
         rv_cat_details.adapter = catAdapter
+    }
+
+    override fun onStart() {
+        super.onStart()
         catPresenter.attachScreen(this)
-        intent.getStringExtra(CAT_BREED_ID).let { catPresenter.loadCatBreed(it) }
+        intent.getStringExtra(CAT_BREED_ID)?.let { catPresenter.loadCatBreed(it) }
     }
 
     override fun onStop() {
@@ -35,6 +43,10 @@ class CatDetailsActivity : AppCompatActivity(), CatDetailsScreen {
 
     override fun showCat(cat: CatBreedListModel) {
         catAdapter.submitList(cat)
+    }
+
+    override fun showImage(url: String?) {
+        url?.let { Glide.with(this).load(url).into(iv_detail) }
     }
 
     companion object {
