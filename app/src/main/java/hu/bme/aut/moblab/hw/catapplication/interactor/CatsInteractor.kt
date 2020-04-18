@@ -3,10 +3,7 @@ package hu.bme.aut.moblab.hw.catapplication.interactor
 import android.content.Context
 import androidx.room.Room
 import hu.bme.aut.moblab.hw.catapplication.db.CatApplicationDb
-import hu.bme.aut.moblab.hw.catapplication.model.BreedResult
-import hu.bme.aut.moblab.hw.catapplication.model.CatBreedModel
-import hu.bme.aut.moblab.hw.catapplication.model.FactResult
-import hu.bme.aut.moblab.hw.catapplication.model.toModel
+import hu.bme.aut.moblab.hw.catapplication.model.*
 import hu.bme.aut.moblab.hw.catapplication.network.CatFactsApi
 import hu.bme.aut.moblab.hw.catapplication.network.TheCatsApi
 import hu.bme.aut.moblab.hw.catapplication.util.Contexts
@@ -36,8 +33,8 @@ class CatsInteractor @Inject constructor (
         return@withContext db.catBreedDao().getAll()
     }
 
-    suspend fun getCatById(id: String): CatBreedModel? = withContext(Contexts.NETWORK) {
-        return@withContext db.catBreedDao().findById(id)
+    suspend fun getCatById(id: String): CatBreedListModel = withContext(Contexts.NETWORK) {
+        return@withContext CatBreedListModel(db.catBreedDao().findById(id))
     }
 
     suspend fun getRandomCatFact(): FactResult? = withContext(Contexts.NETWORK) {

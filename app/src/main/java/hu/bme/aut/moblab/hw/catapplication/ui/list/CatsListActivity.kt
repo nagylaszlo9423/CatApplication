@@ -1,34 +1,42 @@
 package hu.bme.aut.moblab.hw.catapplication.ui.list
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.catapplication.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import hu.bme.aut.moblab.hw.catapplication.R
 import hu.bme.aut.moblab.hw.catapplication.injector
 import hu.bme.aut.moblab.hw.catapplication.model.CatBreedModel
+import hu.bme.aut.moblab.hw.catapplication.ui.details.CatDetailsActivity
 import kotlinx.android.synthetic.main.activity_cats_list.*
-import java.lang.Exception
 import javax.inject.Inject
 
-class CatsListActivity @Inject constructor(
-    private val catsPresenter: CatsPresenter
-) : AppCompatActivity(), CatsListScreen {
+class CatsListActivity : AppCompatActivity(), CatsListScreen, ItemClickListener {
 
     private lateinit var catsAdapter: CatsAdapter
+
+    @Inject
+    lateinit var catsPresenter: CatsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         injector().inject(this)
         super.onCreate(savedInstanceState, persistentState)
         setContentView(R.layout.activity_cats_list)
-        catsAdapter = CatsAdapter()
+        catsAdapter = CatsAdapter(this)
+        rv_cats_list.layoutManager = LinearLayoutManager(applicationContext)
         rv_cats_list.adapter = catsAdapter
         catsPresenter.loadCatBreeds()
     }
 
     override fun showCats(cats: List<CatBreedModel>?) {
-        if (!cats.isNullOrEmpty()) {
-            catsAdapter.catBreeds = cats
-        }
+        catsAdapter.submitList(cats)
+    }
+
+    override fun onItemClick(id: String) {
+        val intent = Intent(applicationContext, CatDetailsActivity::class.java)
+        intent.putExtra(CatDetailsActivity.CAT_BREED_ID, id)
+        startActivity(intent)
     }
 
 }

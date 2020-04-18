@@ -25,7 +25,8 @@
 
     </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cat_details"
         android:layout_height="match_parent"
         android:layout_width="match_parent"/>
 
