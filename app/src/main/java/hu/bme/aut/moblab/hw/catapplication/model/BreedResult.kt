@@ -77,7 +77,7 @@ data class BreedResult(
 )
 
 fun BreedResult.toModel() = CatBreedModel(
-    id,
+    id.orEmpty(),
     name,
     temperament,
     lifeSpan,

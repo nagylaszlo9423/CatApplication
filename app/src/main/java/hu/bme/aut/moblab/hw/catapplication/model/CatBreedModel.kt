@@ -1,12 +1,13 @@
 package hu.bme.aut.moblab.hw.catapplication.model
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = CatBreedModel.TABLE_NAME)
 data class CatBreedModel (
-    @PrimaryKey val id: String? = null,
+    @PrimaryKey val id: String,
     @ColumnInfo(name = "name") val name: String? = null,
     @ColumnInfo(name = "temperament") val temperament: String? = null,
     @ColumnInfo(name = "life_span") val lifeSpan: String? = null,

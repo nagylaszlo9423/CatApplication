@@ -24,7 +24,13 @@ class CatDetailsActivity : AppCompatActivity(), CatDetailsScreen {
         catAdapter = CatAdapter()
         rv_cat_details.layoutManager = LinearLayoutManager(applicationContext)
         rv_cat_details.adapter = catAdapter
+        catPresenter.attachScreen(this)
         intent.getStringExtra(CAT_BREED_ID).let { catPresenter.loadCatBreed(it) }
+    }
+
+    override fun onStop() {
+        catPresenter.detachScreen()
+        super.onStop()
     }
 
     override fun showCat(cat: CatBreedListModel) {

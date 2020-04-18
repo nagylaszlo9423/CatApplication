@@ -1,6 +1,7 @@
 package hu.bme.aut.moblab.hw.catapplication
 
 import dagger.Component
+import hu.bme.aut.moblab.hw.catapplication.db.RoomModule
 import hu.bme.aut.moblab.hw.catapplication.interactor.InteractorModule
 import hu.bme.aut.moblab.hw.catapplication.network.NetworkModule
 import hu.bme.aut.moblab.hw.catapplication.ui.UIModule
@@ -14,7 +15,8 @@ import javax.inject.Singleton
         ApplicationModule::class,
         UIModule::class,
         NetworkModule::class,
-        InteractorModule::class
+        InteractorModule::class,
+        RoomModule::class
     ]
 )
 interface CatApplicationComponent {

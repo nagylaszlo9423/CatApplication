@@ -19,14 +19,20 @@ class CatsListActivity : AppCompatActivity(), CatsListScreen, ItemClickListener 
     @Inject
     lateinit var catsPresenter: CatsPresenter
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         injector().inject(this)
-        super.onCreate(savedInstanceState, persistentState)
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cats_list)
         catsAdapter = CatsAdapter(this)
         rv_cats_list.layoutManager = LinearLayoutManager(applicationContext)
         rv_cats_list.adapter = catsAdapter
+        catsPresenter.attachScreen(this)
         catsPresenter.loadCatBreeds()
+    }
+
+    override fun onStop() {
+        catsPresenter.detachScreen()
+        super.onStop()
     }
 
     override fun showCats(cats: List<CatBreedModel>?) {
