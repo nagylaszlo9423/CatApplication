@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_light_background"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/tv_prop_name"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp" />
+
+    <TextView
+        android:id="@+id/tv_prop_value"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp" />
+
+</LinearLayout>
