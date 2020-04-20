@@ -1,8 +1,6 @@
 package hu.bme.aut.moblab.hw.catapplication.interactor
 
-import android.content.Context
-import androidx.room.Room
-import hu.bme.aut.moblab.hw.catapplication.db.CatApplicationDb
+import hu.bme.aut.moblab.hw.catapplication.db.dao.CatBreedDao
 import hu.bme.aut.moblab.hw.catapplication.model.*
 import hu.bme.aut.moblab.hw.catapplication.network.CatFactsApi
 import hu.bme.aut.moblab.hw.catapplication.network.TheCatsApi
@@ -13,28 +11,23 @@ import javax.inject.Inject
 class CatsInteractor @Inject constructor (
     private val theCatsApi: TheCatsApi,
     private val catFactsApi: CatFactsApi,
-    applicationContext: Context
+    private val catBreedDao: CatBreedDao
 ) {
-
-    private val db = Room.databaseBuilder(
-        applicationContext,
-        CatApplicationDb::class.java, "cat-database"
-    ).build()
 
     suspend fun getAllCats(): List<CatBreedModel> = withContext(Contexts.NETWORK){
         val allCatsCall = theCatsApi.getAllCats()
         val allCatsResponse = allCatsCall.execute()
 
         if (allCatsResponse.isSuccessful) {
-            db.catBreedDao().deleteAll()
-            db.catBreedDao().insertAll(allCatsResponse.body()?.map(BreedResult::toModel))
+            catBreedDao.deleteAll()
+            catBreedDao.insertAll(allCatsResponse.body()?.map(BreedResult::toModel))
         }
 
-        return@withContext db.catBreedDao().getAll()
+        return@withContext catBreedDao.getAll()
     }
 
     suspend fun getCatById(id: String): CatBreedListModel = withContext(Contexts.NETWORK) {
-        return@withContext CatBreedListModel(db.catBreedDao().findById(id))
+        return@withContext CatBreedListModel(catBreedDao.findById(id))
     }
 
     suspend fun getImageUrlForCatById(id: String): String? = withContext(Contexts.NETWORK) {

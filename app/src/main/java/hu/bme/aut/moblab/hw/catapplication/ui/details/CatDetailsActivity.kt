@@ -11,7 +11,7 @@ import hu.bme.aut.moblab.hw.catapplication.ui.list.CatDetailsScreen
 import kotlinx.android.synthetic.main.activity_cat_details.*
 import javax.inject.Inject
 
-class CatDetailsActivity : AppCompatActivity(), CatDetailsScreen {
+open class CatDetailsActivity : AppCompatActivity(), CatDetailsScreen {
 
     private lateinit var catAdapter: CatAdapter
 

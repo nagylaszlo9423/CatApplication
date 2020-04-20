@@ -3,13 +3,16 @@ package hu.bme.aut.moblab.hw.catapplication
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
+import hu.bme.aut.moblab.hw.catapplication.util.Contexts
+import kotlinx.coroutines.CoroutineScope
 
 @Module
-class ApplicationModule(private val context: Context) {
+open class ApplicationModule(private val context: Context) {
 
     @Provides
-    @Singleton
-    fun provideContext(): Context = context
+    open fun provideContext(): Context = context
+
+    @Provides
+    fun provideCoroutineScope(): CoroutineScope = CoroutineScope(Contexts.UI)
 
 }

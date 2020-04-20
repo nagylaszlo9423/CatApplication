@@ -8,14 +8,11 @@ import javax.inject.Inject
 
 class CatPresenter @Inject constructor(private val catsInteractor: CatsInteractor) : Presenter<CatDetailsScreen>() {
 
-    fun loadCatBreed(id: String) {
-        launch {
-            screen?.let {
-                it.showCat(catsInteractor.getCatById(id))
-                it.showImage(catsInteractor.getImageUrlForCatById(id))
-                it.showRandomFact(catsInteractor.getRandomCatFact())
-            }
+    fun loadCatBreed(id: String) = launch {
+        screen?.let {
+            it.showCat(catsInteractor.getCatById(id))
+            it.showImage(catsInteractor.getImageUrlForCatById(id))
+            it.showRandomFact(catsInteractor.getRandomCatFact())
         }
     }
-
 }

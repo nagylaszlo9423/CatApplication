@@ -1,18 +1,20 @@
 package hu.bme.aut.moblab.hw.catapplication.db
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
-import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
-class RoomModule @Inject constructor(private val application: Application) {
-    private val catApplicationDb: CatApplicationDb =
-        Room.databaseBuilder(application, CatApplicationDb::class.java, "cat-applocation-db").build()
+class RoomModule {
 
     @Provides
     @Singleton
-    fun providesCatApplicationDb() = catApplicationDb
+    fun providesCatApplicationDb(context: Context) = Room.databaseBuilder(context, CatApplicationDb::class.java, "cat-database").build()
+
+    @Provides
+    @Singleton
+    fun providesCatBreedDao(catApplicationDb: CatApplicationDb) = catApplicationDb.catBreedDao()
+
 }

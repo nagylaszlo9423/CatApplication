@@ -13,7 +13,7 @@ import hu.bme.aut.moblab.hw.catapplication.ui.details.CatDetailsActivity
 import kotlinx.android.synthetic.main.activity_cats_list.*
 import javax.inject.Inject
 
-class CatsListActivity : AppCompatActivity(), CatsListScreen, ItemClickListener {
+open class CatsListActivity : AppCompatActivity(), CatsListScreen, ItemClickListener {
 
     private lateinit var catsAdapter: CatsAdapter
 
