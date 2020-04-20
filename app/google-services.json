@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "164512094750",
+    "firebase_url": "https://catapplication-b5a97.firebaseio.com",
+    "project_id": "catapplication-b5a97",
+    "storage_bucket": "catapplication-b5a97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164512094750:android:b4541f5e8395ae31336c0f",
+        "android_client_info": {
+          "package_name": "hu.bme.aut.moblab.hw.catapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164512094750-ss2a4sg2n3boimrdf0d6529n6tn4ksj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCApU65awXg4l8JYATgilCBpE0qD1TD5MQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164512094750-ss2a4sg2n3boimrdf0d6529n6tn4ksj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
